@@ -68,16 +68,12 @@ public class JsonParser {
     }
 
     public Object parseMap() throws IOException {
-        return parseMap(JsonToken.END_OBJECT);
-    }
-
-    public Object parseMap(JsonToken endToken) throws IOException {
 
         Object m = mapReader.invoke();
 
-        while(jp.nextToken() != endToken) {
+        while(jp.nextToken() != JsonToken.END_OBJECT) {
             Object key = parseVal();
-	    jp.nextToken(); // advance to read value
+	    jp.nextToken();
 	    Object val = parseVal();
             m = mapReader.invoke(m, key, val);
         }
@@ -87,6 +83,7 @@ public class JsonParser {
 
     public Object parseArray() throws IOException {
 	Object a = arrayReader.invoke();
+
         while (jp.nextToken() != JsonToken.END_ARRAY) {
 	    a = arrayReader.invoke(a, parseVal());
 	}
