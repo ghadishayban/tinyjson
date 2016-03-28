@@ -1,0 +1,2 @@
+On 2016-04-06, Glenn Vanderburg (glenn.vanderburg@livingsocial.com, GitHub user glv)
+transferred ownership of tinyjson to Ghadi Shayban (GitHub user ghadishayban).
